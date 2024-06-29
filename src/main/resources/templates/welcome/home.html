@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-secuirty"
+>
   <head>
     <meta charset="utf-8" />
     <title>Home</title>
@@ -15,6 +18,20 @@
       <p th:text="|The time on the server is ${serverTime}.|">
         The time on the server is 2018/01/01 00:00:00 JST.
       </p>
+      <form
+        th:action="@{/logout}"
+        method="post"
+        sec:authorize="isAuthenticated()"
+      >
+        <button type="submit">Logout</button>
+      </form>
+
+      <ul sec:authorize="isAuthenticated()">
+        <li><a th:href="@{/todo/list}">view todo list page</a></li>
+      </ul>
+      <ul sec:authorize="!isAuthenticated()">
+        <li><a th:href="@{/login/loginForm}">view login page</a></li>
+      </ul>
     </div>
   </body>
 </html>
