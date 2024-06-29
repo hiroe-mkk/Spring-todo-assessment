@@ -7,7 +7,8 @@ spring:
   sql:
     init:
       mode: always
-      schema-locations: classpath:schema.sql
+      schema-locations: classpath:database/schema.sql
+      data-locations: classpath:database/data.sql
   thymeleaf:
     cache: false
 

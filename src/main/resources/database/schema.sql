@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS todo (
 
 CREATE TABLE IF NOT EXISTS account (
   username VARCHAR(50) PRIMARY KEY,
-  password VARCHAR(60) NOT NULL,
+  password VARCHAR(124) NOT NULL,
   first_name VARCHAR(50) NOT NULL,
   last_name VARCHAR(50) NOT NULL
 )
