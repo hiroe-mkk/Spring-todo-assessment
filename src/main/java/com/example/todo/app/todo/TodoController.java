@@ -4,7 +4,6 @@ import com.example.todo.common.exception.BusinessException;
 import com.example.todo.common.message.ResultMessage;
 import com.example.todo.domain.model.todo.Todo;
 import com.example.todo.domain.service.todo.TodoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,8 +22,11 @@ import static com.example.todo.app.todo.TodoForm.*;
 @RequestMapping("todo")
 public class TodoController {
 
-    @Autowired
-    TodoService todoService;
+    private final TodoService todoService;
+
+    public TodoController(TodoService todoService) {
+        this.todoService = todoService;
+    }
 
     @ModelAttribute
     public TodoForm setUpForm() {

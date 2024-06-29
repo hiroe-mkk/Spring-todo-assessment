@@ -5,7 +5,6 @@ import com.example.todo.common.exception.ResourceNotFoundException;
 import com.example.todo.common.message.ResultMessage;
 import com.example.todo.domain.model.todo.Todo;
 import com.example.todo.domain.repository.todo.TodoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,8 +18,11 @@ public class TodoServiceImpl implements TodoService {
 
     private static final long MAX_UNFINISHED_COUNT = 5;
 
-    @Autowired
-    TodoRepository todoRepository;
+    private final TodoRepository todoRepository;
+
+    public TodoServiceImpl(TodoRepository todoRepository) {
+        this.todoRepository = todoRepository;
+    }
 
     @Override
     @Transactional(readOnly = true)

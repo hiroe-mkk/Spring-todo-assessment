@@ -3,7 +3,6 @@ package com.example.todo.domain.service.userdetails;
 import com.example.todo.common.exception.ResourceNotFoundException;
 import com.example.todo.domain.model.account.Account;
 import com.example.todo.domain.service.account.AccountSharedService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,8 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class SampleUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    AccountSharedService accountSharedService;
+    private final AccountSharedService accountSharedService;
+
+    public SampleUserDetailsService(AccountSharedService accountSharedService) {
+        this.accountSharedService = accountSharedService;
+    }
 
     @Transactional(readOnly = true)
     @Override
