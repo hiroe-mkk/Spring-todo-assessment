@@ -27,10 +27,11 @@
       </form>
 
       <ul sec:authorize="isAuthenticated()">
-        <li><a th:href="@{/todo/list}">view todo list page</a></li>
+        <li><a th:href="@{/account}">Account Information Page</a></li>
+        <li><a th:href="@{/todo/list}">Todo List Page</a></li>
       </ul>
       <ul sec:authorize="!isAuthenticated()">
-        <li><a th:href="@{/login/loginForm}">view login page</a></li>
+        <li><a th:href="@{/login/loginForm}">Login Form Page</a></li>
       </ul>
     </div>
   </body>
