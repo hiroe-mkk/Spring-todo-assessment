@@ -27,6 +27,11 @@ services:
         condition: service_healthy
     ports:
       - '8080:8080'
+    volumes:
+      - .:/app
+      - gradle-cache:/home/gradle/.gradle
+    working_dir: /app
+    command: ["sh", "-c", "./gradlew bootRun"]
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/todo_app
       SPRING_DATASOURCE_USERNAME: root
@@ -34,3 +39,4 @@ services:
 
 volumes:
   mysql-data:
+  gradle-cache:
